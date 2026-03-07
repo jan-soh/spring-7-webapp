@@ -60,7 +60,10 @@ public class BootstrapData implements CommandLineRunner {
         john.setState("State of J");
         john.setZip("ZIP of J");
 
-        publisherRepository.save(john);
+        Publisher savedPublisher = publisherRepository.save(john);
+        dddSaved.setPublisher(savedPublisher);
+
+        bookRepository.save(dddSaved);
 
         System.out.println("In Bootstrap");
         System.out.println("Author Count: " + authorRepository.count());
